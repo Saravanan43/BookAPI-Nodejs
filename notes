@@ -1,0 +1,17 @@
+create server in nodejs
+const http=require("http");//http package
+http.createServer((req,res)=> res.end("heloooo")).listen(3000); end the response listen to that specifies port.
+
+Opening in command prompt
+cd folder path
+ls(mac) dir(window)- gives the content
+node filename
+
+package.json - npm init
+expess install- npm i express
+nodemon-npx nodemon filename
+
+get methid :
+params is an obj mapped with parameter
+
+postman -> workspace -> + -> raw and json
