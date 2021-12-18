@@ -10,8 +10,21 @@ node filename
 package.json - npm init
 expess install- npm i express
 nodemon-npx nodemon filename
-
+mongoose - npm i mongoose
 get methid :
 params is an obj mapped with parameter
 
 postman -> workspace -> + -> raw and json
+Shree123
+
+gitignore - ignore the files which you add
+
+.env is for securing the imp info. IN .env use capitals only.
+
+mango db : ->create cluster
+           ->database access -> create user
+           ->Network access -> IP access List
+           ->Browse collections -> create new collection
+
+Mongoose helps to connect bw mondodb and application 
+co

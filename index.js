@@ -1,8 +1,15 @@
-//const { json } = require("express");
+require('dotenv').config();
 const express=require("express"); // using express
 const booky=express();// intitialization
-const database=require("./database");//import db js file
+const mongoose = require("mongoose");// installing mogoose 
+const database=require("./database/database");//import db js file
 booky.use(express.json()); // using json 
+
+
+mongoose.connect(process.env.MONGO_URL,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+}).then(() => console.log("Connection established"));
 /*
 Route - /
 Task  - Get all books
