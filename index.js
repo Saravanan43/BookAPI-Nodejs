@@ -1,8 +1,19 @@
 require('dotenv').config();
+
 const express=require("express"); // using express
+
 const booky=express();// intitialization
+
 const mongoose = require("mongoose");// installing mogoose 
+
 const database=require("./database/database");//import db js file
+
+const BookModel=require("./database/book");
+
+const AuthorModel=require("./database/author");
+
+const PublicationModel=require("./database/publication");
+
 booky.use(express.json()); // using json 
 
 

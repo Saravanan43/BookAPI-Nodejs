@@ -27,4 +27,5 @@ mango db : ->create cluster
            ->Browse collections -> create new collection
 
 Mongoose helps to connect bw mondodb and application 
-co
+
+create separate js file and make schema and models
