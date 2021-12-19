@@ -29,3 +29,7 @@ mango db : ->create cluster
 Mongoose helps to connect bw mondodb and application 
 
 create separate js file and make schema and models
+
+Import them separetly to index.js file
+
+Mongoose handles async event so use asunc and await. findOne returns empty array.create
