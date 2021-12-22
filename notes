@@ -33,3 +33,5 @@ create separate js file and make schema and models
 Import them separetly to index.js file
 
 Mongoose handles async event so use asunc and await. findOne returns empty array.create
+
+Micro services-> Prefixes for API
