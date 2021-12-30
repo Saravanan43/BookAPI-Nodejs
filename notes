@@ -35,3 +35,5 @@ Import them separetly to index.js file
 Mongoose handles async event so use asunc and await. findOne returns empty array.create
 
 Micro services-> Prefixes for API
+  -> initialise router -> get the modal -> add API
+  ->in index.js->get the apprpriate api file and add prefix
