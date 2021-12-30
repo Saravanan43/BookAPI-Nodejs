@@ -37,3 +37,9 @@ Mongoose handles async event so use asunc and await. findOne returns empty array
 Micro services-> Prefixes for API
   -> initialise router -> get the modal -> add API
   ->in index.js->get the apprpriate api file and add prefix
+
+Validation:
+create a obj and inside it mention required.
+
+Error Handling:
+use try catch

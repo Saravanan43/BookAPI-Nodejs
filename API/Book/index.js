@@ -70,9 +70,14 @@ Methods  - PUSH
 */
 
 router.post("/add/book",async (req,res) => {
-    const newBook =req.body.newBook;
-    BookModel.create(newBook);
+    try {
+        const newBook =req.body.newBook;
+    await BookModel.create(newBook);
     return res.json({Message : " Book is added"});
+    } catch (error) {
+        return res.json({error:error.message});
+    }
+    
 });
 
 /*
