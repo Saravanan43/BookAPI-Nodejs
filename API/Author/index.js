@@ -46,20 +46,7 @@ router.post("/add/author",async (req,res) => {
     return res.json({Message: "Author is added"});
  });
  
- /*
- Route - /add/pub
- Task  - add new publication
- Access - public
- Parameter - none
- Methods  - POST
- */
  
- router.post("/add/pub", async (req,res) => {
-     const pubData=req.body.pubData;
-     PublicationModel.create(pubData);
-     return res.json({Message : "Publication added"});
- });
-
  router.delete("/book/author/delete/:isbn/:authorId",async (req,res) => {
     //delete author from the book
  
@@ -76,15 +63,7 @@ router.post("/add/author",async (req,res) => {
             new:true
         }
     );
-    /*database.Book.forEach((i) => {
-      if(i.ISBN===req.params.isbn)
-      {
-          const filterAuthorList=i.authors.filter((j) => j !== parseInt(req.params.authorId));
-          i.authors=filterAuthorList;
-          return ;
-      }
-    });*/
- 
+    
     // delete isbn from author
     const updateAuthorList =await AuthorModel.findOneAndUpdate(
         {
@@ -98,16 +77,7 @@ router.post("/add/author",async (req,res) => {
         {
             new : true
         }
-    );
-    /* database.Author.forEach((i) => {
-       if(i.id === parseInt(req.params.authorId))
-       {
-         const filterBooksList=i.books.filter((j) => j !== (req.params.isbn));
-         i.books=filterBooksList;
-         return ;
-       }
-    });*/
- 
+    ); 
     return res.json ({deletebookList : updatedBookList,deleteAuthorList : updateAuthorList});
  });
 

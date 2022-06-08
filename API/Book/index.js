@@ -20,7 +20,7 @@ router.get("/",async (req,res)=>
 );
 
 /*
-Route - /book
+Route - /:ISBN
 Task  - Get specific books
 Access - public
 Parameter - isbn
@@ -40,7 +40,7 @@ router.get("/:ISBN",async (req,res)=>{
   });
 
   /*
-Route - /book/c
+Route - /c/:category
 Task  - Get specific books on category
 Access - public
 Parameter - category
@@ -80,40 +80,12 @@ router.post("/add/book",async (req,res) => {
     
 });
 
-/*
-Route - /update/bookName
-Task  - update book name
-Access - public
-Parameter - isbn
-Methods  - PUT
-*/
-
-router.put("/update/bookName/:isbn",async (req,res) => {
-    const {isbn}=req.params;
-    const {bookName}=req.body;
-    const updatedBookList =await BookModel.findOneAndUpdate({
-          ISBN:isbn
-    },
-    {
-         title:bookName
-    },
-    {
-         new: true //to get upadate data inpostman
-    });
-
-    /*database.Book.forEach((i) => {
-        if(i.ISBN===isbn)
-        {i.title=bookName;
-        return;}
-    });*/
-    return res.json({updatedList : updatedBookList});
-});
 
 /*
 Route - /update/bookName
-Task  - update book name
+Task  - update book name and update in author
 Access - public
-Parameter - isbn
+Parameter - id,isbn
 Methods  - PUT
 */
 
@@ -178,69 +150,12 @@ Parameter - isbn
 Methods  - DELETE
 */
 
-router.delete("/delete/:isbn",async (req,res) => {
-    await BookModel.findOneAndDelete({ISBN : req.params.isbn});
-     /*const filterList= database.Book.filter((i) => i.ISBN!== req.params.isbn);
-     database.Book=filterList;*/
-     return res.json({deletedList : "Deleted"});
- });
  
  router.delete("/book/delete/:isbn",async (req,res) => {
     await BookModel.findOneAndDelete({ISBN : req.params.isbn});
      /*const filterList= database.Book.filter((i) => i.ISBN!== req.params.isbn);
      database.Book=filterList;*/
      return res.json({deletedList : "Deleted"});
- });
- 
- router.delete("/author/delete/:isbn/:authorId",async (req,res) => {
-    //delete author from the book
- 
-    const updatedBookList=await BookModel.findOneAndUpdate(
-        {
-            ISBN :req.params.isbn
-        },
-        {
-            $pull : {
-                authors : parseInt(req.params.authorId)
-            }
-        },
-        {
-            new:true
-        }
-    );
-    /*database.Book.forEach((i) => {
-      if(i.ISBN===req.params.isbn)
-      {
-          const filterAuthorList=i.authors.filter((j) => j !== parseInt(req.params.authorId));
-          i.authors=filterAuthorList;
-          return ;
-      }
-    });*/
- 
-    // delete isbn from author
-    const updateAuthorList =await AuthorModel.findOneAndUpdate(
-        {
-             id : parseInt(req.params.authorId)
-        },
-        {
-           $pull : {
-               books :req.params.isbn
-           }
-        },
-        {
-            new : true
-        }
-    );
-    /* database.Author.forEach((i) => {
-       if(i.id === parseInt(req.params.authorId))
-       {
-         const filterBooksList=i.books.filter((j) => j !== (req.params.isbn));
-         i.books=filterBooksList;
-         return ;
-       }
-    });*/
- 
-    return res.json ({deletebookList : updatedBookList,deleteAuthorList : updateAuthorList});
  });
 
  module.exports=router;

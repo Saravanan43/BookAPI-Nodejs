@@ -36,6 +36,22 @@ router.get("/publication/:book",async (req,res) => {
 
 });
 
+
+/*
+ Route - /add/pub
+ Task  - add new publication
+ Access - public
+ Parameter - none
+ Methods  - POST
+ */
+ 
+ router.post("/add/pub", async (req,res) => {
+    const pubData=req.body.pubData;
+    PublicationModel.create(pubData);
+    return res.json({Message : "Publication added"});
+});
+
+
 /*
 Route - /update/bookName
 Task  - add book to pub and update pubid in book section 
